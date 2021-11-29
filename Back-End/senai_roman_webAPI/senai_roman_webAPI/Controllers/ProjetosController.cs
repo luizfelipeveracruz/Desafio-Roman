@@ -8,39 +8,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace senai_roman_webAPI.Contexts
+namespace senai_roman_webAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProjetosController : ControllerBase
     {
-        private IProjetoRepository _Repository { get; set; }
+        private IProjetoRepository _projetoRepository { get; set; }
 
         public ProjetosController()
         {
-            _Repository = new ProjetoRepository();
+            _projetoRepository = new ProjetoRepository();
         }
 
+        /// <summary>
+        /// Lista de projetos
+        /// </summary>
+        /// <returns>Uma lista de projetos</returns>
+        [Authorize(Roles = "2")]
         [HttpGet]
-        [Authorize]
         public IActionResult Listar()
         {
             try
             {
-                return Ok(_Repository.Listar());
+                return Ok(_projetoRepository.Listar());
             }
-            catch(Exception ex)
+            catch(Exception erro)
             {
-                return BadRequest(ex);
+                return BadRequest(erro);
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo projeto
+        /// </summary>
+        /// <param name="novoProjeto">um objeto para ser cadastrado</param>
+        /// <returns>objeto cadastrado</returns>
+        [Authorize(Roles = "2")]
         [HttpPost]
-        [Authorize]
-        public IActionResult Cadastrar(Projeto obj)
+        public IActionResult Cadastrar(Projeto novoProjeto)
         {
-            _Repository.Cadastrar(obj);
-            return StatusCode(201);
+            try
+            {
+                _projetoRepository.Cadastrar(novoProjeto);
+
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
         }
     }
 }

@@ -11,17 +11,9 @@ namespace senai_roman_webAPI.Repositories
     public class UsuarioRepository : IUsuarioRepository
     {
         RomanContext ctx = new RomanContext();
-
         public Usuario Logar(string email, string senha)
         {
-            Usuario user = ctx.Usuarios.FirstOrDefault(u => u.EmailUsuario == email);
-
-            if (user != null && user.SenhaUsuario == senha)
-            {
-                return user;
-            }
-
-            return null;
+            return ctx.Usuarios.FirstOrDefault(u => u.EmailUsuario == email && u.SenhaUsuario == senha);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace senai_roman_webAPI.Interfaces
 {
-    public class IUsuarioRepository
+    interface IUsuarioRepository
     {
         /// <summary>
         /// Verifica a identificação do usuário

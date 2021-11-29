@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace senai_roman_webAPI.Interfaces
 {
-    public class IProjetoRepository
+    /// <summary>
+    /// Interface responsável pelo ProjetoRepository
+    /// </summary>
+    interface IProjetoRepository
     {
         /// <summary>
         /// Lista todos os projetos
