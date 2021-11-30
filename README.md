@@ -8,7 +8,6 @@
   <p align="center">
     A plataforma de auxílio aos professores!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore o projeto »</strong></a>
     <br />
     <br />
     <a href="https://github.com/chibobinho">Yuri Chiba</a>
